@@ -2,8 +2,6 @@
 # 1. Merge two singly linked lists without creating new nodes.
 # 2. Find the middle element of the linked list in a single pass.
 # 3. Insert a node in a linked list.
-# 4. Find the sum of two numbers represented as linked lists.
-# 5. Find the second number of linked lists from the last in a single pass.
 
 from __future__ import annotations
 from typing import Any, List
@@ -87,6 +85,16 @@ class LinkedList:
         prev.next = temp
         temp.next = curr
 
+    def find_middle_element(self) -> Any:
+        values = []
+
+        curr = self.head
+        while curr:
+            values.append(curr.value)
+            curr = curr.next
+
+        return values[len(values) // 2]
+
     @staticmethod
     def from_array(values: List[Any]) -> LinkedList:
         """Make linked list from array of values"""
@@ -138,9 +146,6 @@ class LinkedList:
         return ll
 
 
-ll_a = LinkedList.from_array([10, 20, 26, 30, 40, 50])
-ll_b = LinkedList.from_array([5, 15, 15, 17, 23, 25, 35])
+ll_a = LinkedList.from_array([10, 20, 30, 40])
+print(ll_a.find_middle_element())
 
-ll_c = LinkedList.merge_lists(ll_a, ll_b)
-
-print(ll_a)
